@@ -1,12 +1,16 @@
 
 int x=0;
+float scale = 0;
 PGraphics surface;
 
 void setup()
 {
   
   size(520,520);
-  surface = createGraphics(520/5, 520/5);
+  
+  surface = createGraphics(130, 130);
+  scale = (float) surface.width/ (float) width;
+
   
 }
 
@@ -21,6 +25,8 @@ void draw()
   surface.line(surface.width/2,0,surface.width/2,surface.height);
   surface.line(0,surface.height/2,surface.width,surface.height/2);
   surface.translate(surface.width/2,surface.height/2);
+  surface.scale(scale,scale);
+  
   DrawMirrorPart();
   surface.scale(1,-1);
   DrawMirrorPart();
@@ -56,9 +62,9 @@ void Wrap()
     {
     
       image(surface, i, j);
-      break;
+      //break;
     }
-    break;
+    //break;
   }
 }
 
