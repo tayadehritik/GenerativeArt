@@ -1,16 +1,16 @@
 
 int x=0;
-float scale = 0;
+float scaleWidth = 0;
+float scaleHeight = 0;
 PGraphics surface;
 
 void setup()
 {
   
   size(520,520);
-  
-  surface = createGraphics(130, 130);
-  scale = (float) surface.width/ (float) width;
-
+  surface = createGraphics(520, 520);
+  scaleWidth = (float) surface.width / (float) width;
+  scaleHeight = (float) surface.height / (float) height;
   
 }
 
@@ -21,11 +21,10 @@ void draw()
   
   
   surface.beginDraw();
-  surface.background(152,190,100);
   surface.line(surface.width/2,0,surface.width/2,surface.height);
   surface.line(0,surface.height/2,surface.width,surface.height/2);
   surface.translate(surface.width/2,surface.height/2);
-  surface.scale(scale,scale);
+  surface.scale(scaleWidth,scaleHeight);
   
   DrawMirrorPart();
   surface.scale(1,-1);
@@ -62,15 +61,26 @@ void Wrap()
     {
     
       image(surface, i, j);
-      //break;
+      break;
     }
-    //break;
+    break;
   }
 }
 
 void DrawMirrorPart()
 {
+  
+  //surface.rect(20,20,100,100);
   surface.noFill();
-  surface.rect(20,20,100,100);
-  //surface.circle(20, 20, 200); 
+  surface.circle(20, 20, 100);
+  
+  surface.line(60,50,120,50);
+  surface.line(120,50,120,0);
+  
+  surface.line(55,55,70,60);
+  surface.line(120,50,160,60);
+  
+  surface.line(70,60,160,60);
+  surface.line(160,60,160,0);
+  
 }
