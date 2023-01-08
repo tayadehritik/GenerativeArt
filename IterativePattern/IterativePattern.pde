@@ -7,7 +7,8 @@ PGraphics surface;
 void setup()
 {
   
-  size(520,520);
+  size(1920,1080);
+  smooth(8);
   surface = createGraphics(520, 520);
   scaleWidth = (float) surface.width / (float) width;
   scaleHeight = (float) surface.height / (float) height;
@@ -21,8 +22,8 @@ void draw()
   
   
   surface.beginDraw();
-  surface.line(surface.width/2,0,surface.width/2,surface.height);
-  surface.line(0,surface.height/2,surface.width,surface.height/2);
+  //surface.line(surface.width/2,0,surface.width/2,surface.height);
+  //surface.line(0,surface.height/2,surface.width,surface.height/2);
   surface.translate(surface.width/2,surface.height/2);
   surface.scale(scaleWidth,scaleHeight);
   
@@ -48,7 +49,7 @@ void draw()
   rect(20,20,100,50);
   */
   
-  
+  save("abc.png");
   
   
 }
@@ -61,9 +62,9 @@ void Wrap()
     {
     
       image(surface, i, j);
-      break;
+      //break;
     }
-    break;
+    //break;
   }
 }
 
@@ -82,5 +83,11 @@ void DrawMirrorPart()
   
   surface.line(70,60,160,60);
   surface.line(160,60,160,0);
+  
+  surface.line(0,160,40,160);
+  surface.line(40,160,40,110);
+  surface.line(0,110,40,110);
+  
+  surface.line(0,190,20,200);
   
 }
