@@ -2,28 +2,21 @@
 int x=0;
 float scaleWidth = 0;
 float scaleHeight = 0;
+int splitNumber = 5;
 PGraphics surface;
 
 void setup()
 {
   
-  size(1920,1080);
-  smooth(8);
-  surface = createGraphics(520, 520);
+ 
+  fullScreen();
+  surface = createGraphics(width/splitNumber, height/splitNumber);
   scaleWidth = (float) surface.width / (float) width;
   scaleHeight = (float) surface.height / (float) height;
   
-}
-
-void draw()
-{
-  //line(width/2,0,width/2,height);
-  //line(0,height/2,width,height/2);
-  
-  
   surface.beginDraw();
-  //surface.line(surface.width/2,0,surface.width/2,surface.height);
-  //surface.line(0,surface.height/2,surface.width,surface.height/2);
+  surface.line(surface.width/2,0,surface.width/2,surface.height);
+  surface.line(0,surface.height/2,surface.width,surface.height/2);
   surface.translate(surface.width/2,surface.height/2);
   surface.scale(scaleWidth,scaleHeight);
   
@@ -38,6 +31,17 @@ void draw()
   Wrap();
   
   
+}
+
+void draw()
+{
+  //line(width/2,0,width/2,height);
+  //line(0,height/2,width,height/2);
+  
+  
+ 
+  
+  
   /*
   translate(width/2, height/2);
   rect(20,20,100,50);
@@ -49,16 +53,15 @@ void draw()
   rect(20,20,100,50);
   */
   
-  save("abc.png");
   
   
 }
 
 void Wrap()
 {
-  for(int i=0;i<width;i+=width/5)
+  for(int i=0;i<width;i+=width/splitNumber)
   {
-    for(int j=0;j<height;j+=height/5)
+    for(int j=0;j<height;j+=height/splitNumber)
     {
     
       image(surface, i, j);
