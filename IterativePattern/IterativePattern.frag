@@ -22,7 +22,22 @@ float plotRectangle(float x1, float y1, float x2, float y2, vec2 st) {
     float x2_coord = 1.0 - step(x2,st.x);
     float y2_coord = 1.0 - step(y2,st.y);
 
-    return x1_coord * y1_coord * x2_coord * y2_coord;
+    return x1_coord * y1_coord * x2_coord * y2_coord ;
+
+}
+
+float plotRectangleWithOutline(float outlineSize, float x1, float y1, float x2, float y2, vec2 st) {
+
+    
+    float x1_coord = step(x1, st.x);
+    float y1_coord = step(y1, st.y);
+    
+    float product = x1_coord * y1_coord;
+
+    //float x2_coord = 1.0 - step(x2,st.x);
+    //float y2_coord = 1.0 - step(y2,st.y);
+
+    return  product ;
 
 }
 
@@ -35,9 +50,9 @@ void main() {
 
     
 
-    color = vec3(plotRectangle(0.05,0.05,0.5,0.5,st));
-    vec3 color2 = vec3(plotRectangle(0.5,0.5,0.9,0.9,st));
+    color = vec3(plotRectangleWithOutline(0.1,0.05,0.05,0.5,0.5,st));
+    //vec3 color2 = vec3(plotRectangle(0.5,0.5,0.95,0.95,st));
 
-	gl_FragColor = vec4(color + color2,1.0);
+	gl_FragColor = vec4(color,1.0);
 }
 
