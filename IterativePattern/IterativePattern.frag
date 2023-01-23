@@ -47,8 +47,17 @@ float plotRectangleWithOutline(float outlineSize, float x1, float y1, float x2, 
 
 }
 
+
+float random (vec2 st) {
+    return fract(sin(dot(st.xy,
+                         vec2(12.9898,78.233)))*
+        43758.5453123);
+}
+
 void main() {
+
 	vec2 st = gl_FragCoord.xy/u_resolution.xy;
+    vec2 mousest = u_mouse/u_resolution;
     vec3 color = vec3(0.0);
     
     float leftbottom = floor((1.0-0.2)+st.x) * floor((1.0-0.2)+st.y);
@@ -56,9 +65,9 @@ void main() {
 
     
 
-    color = vec3(plotRectangleWithOutline(0.005,0.0,0.0,0.9,0.9,st));
-    //vec3 color2 = vec3(plotRectangle(0.5,0.5,0.95,0.95,st));
+    vec3 color1 = vec3(plotRectangle(0.0,0.0,0.2,0.4,st));
+    vec3 color2 = vec3(plotRectangle(0.225,0.0,0.5,0.4,st));
 
-	gl_FragColor = vec4(color,1.0);
+	gl_FragColor = vec4(color2+color1,1.0);
 }
 
